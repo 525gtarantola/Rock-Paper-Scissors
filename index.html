@@ -23,29 +23,29 @@
 </head>
 
 <body>
-<div class="h1 text-center"><h1>Rock, Paper, Scissors!</h1></div>
-<div class="h2 text-center"><h2>User v. Computer</h2></div>
-
-<div class="row g-4 text-center">
-
-    <div class="col-lg-4 col-md-12">
-      <div class="rock">
-        <img src="/images/rock.png" alt="">
+  <div class="container">
+      <h1>Rock, Paper, Scissors!</h1>
+      <h2>User v. Computer</h2>
+      <label for="username">Your Name:</label>
+      <input type="text" id="username">
+      <div id="rounds">
+          <button class="btn btn-primary" onclick="playRound('rock')">Rock</button>
+          <button class="btn btn-primary" onclick="playRound('paper')">Paper</button>
+          <button class="btn btn-primary" onclick="playRound('scissors')">Scissors</button>
       </div>
-    </div>
-
-    <div class="col-lg-4 col-md-6">
-        <div class="paper">
-          <img src="/images/paper.png" alt="">
-        </div>
+      <div id="choices">
+          <p><span id="user-label"></span> Choice: <span id="user-choice"></span></p>
+          <p>Computer Choice: <span id="computer-choice"></span></p>
       </div>
-
-      <div class="col-lg-4 col-md-6">
-        <div class="scissors">
-          <img src="/images/scissors.png" alt="">
-        </div>
+      <div id="result"></div>
+      <div id="score">
+          <p><span id="user-name"></span> Wins: <span id="user-wins">0</span></p>
+          <p>Computer Wins: <span id="computer-wins">0</span></p>
       </div>
-
+      <button class="btn btn-primary" onclick="resetGame()">Reset Game</button>
+  </div>
+  <script src="script.js"></script>
+</body>
 
 
 
