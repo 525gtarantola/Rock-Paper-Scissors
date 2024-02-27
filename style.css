@@ -1,0 +1,36 @@
+body{
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+}
+
+h1{
+    margin: 2%; 
+}
+
+h2{
+    margin: 2%; 
+}
+
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  button {
+    margin: 5px;
+  }
+  
+  #choices {
+    margin-top: 20px;
+  }
+  
+  #score {
+    margin-top: 20px;
+  }
+  
+  #game-over {
+    margin-top: 20px;
+  }

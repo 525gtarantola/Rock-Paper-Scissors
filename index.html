@@ -17,7 +17,44 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rum+Raisin&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 </head>
+
+<body>
+<div class="container">
+    <h1>Rock, Paper, Scissors!</h1>
+    <h2>User v. Computer</h2>
+    <div id="player-info">
+      <label for="player-name">Enter your name:</label>
+      <input type="text" id="player-name">
+      <button onclick="startGame()">Start Game</button>
+    </div>
+    <div id="game" style="display: none;">
+      <h2 id="round-counter"></h2>
+      <div id="choices">
+        <button onclick="playRound('rock')">Rock</button>
+        <button onclick="playRound('paper')">Paper</button>
+        <button onclick="playRound('scissors')">Scissors</button>
+      </div>
+      <div id="results"></div>
+      <div id="score">
+        <p>Player: <span id="player-score">0</span></p>
+        <p>Computer: <span id="computer-score">0</span></p>
+      </div>
+      <div id="game-over" style="display: none;">
+        <h2>Game Over</h2>
+        <p id="winner"></p>
+        <p id="message"></p>
+        <button onclick="resetGame()">Play Again</button>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+
+
+</body>
 
 
 
