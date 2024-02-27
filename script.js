@@ -1,80 +1,94 @@
-let userWins = 0;
-let computerWins = 0;
-let rounds = 0;
-let userName = '';
+let playerName;
+let playerScore = 0;
+let computerScore = 0;
+let round = 1;
 
-function playRound(userChoice) {
-    const computerChoice = generateComputerChoice();
-    displayChoices(userChoice, computerChoice);
-    const result = determineWinner(userChoice, computerChoice);
-    updateScore(result);
-    rounds++;
-    if (rounds === 5) {
-        endGame();
-    }
+function startGame() {
+  playerName = document.getElementById('player-name').value;
+  document.getElementById('player-info').style.display = 'none';
+  document.getElementById('game').style.display = 'block';
+  updateRoundCounter();
 }
 
-function generateComputerChoice() {
-    const choices = ['rock', 'paper', 'scissors'];
-    const randomIndex = Math.floor(Math.random() * choices.length);
-    return choices[randomIndex];
+function updateRoundCounter() {
+  document.getElementById('round-counter').textContent = `Round ${round}`;
 }
 
-function displayChoices(userChoice, computerChoice) {
-    document.getElementById('user-choice').innerText = userChoice;
-    document.getElementById('computer-choice').innerText = computerChoice;
-    document.getElementById('user-label').innerText = userName;
+function playRound(playerChoice) {
+  const choices = ['rock', 'paper', 'scissors'];
+  const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+
+  const result = getResult(playerChoice, computerChoice);
+  displayResult(playerChoice, computerChoice, result);
+  updateScore(result);
+  round++;
+
+  if (round > 5) {
+    endGame();
+  } else {
+    updateRoundCounter();
+  }
 }
 
-function determineWinner(userChoice, computerChoice) {
-    if (userChoice === computerChoice) {
-        return 'tie';
-    } else if (
-        (userChoice === 'rock' && computerChoice === 'scissors') ||
-        (userChoice === 'paper' && computerChoice === 'rock') ||
-        (userChoice === 'scissors' && computerChoice === 'paper')
-    ) {
-        return 'user';
-    } else {
-        return 'computer';
-    }
+function getResult(playerChoice, computerChoice) {
+  if (playerChoice === computerChoice) {
+    return 'tie';
+  } else if (
+    (playerChoice === 'rock' && computerChoice === 'scissors') ||
+    (playerChoice === 'paper' && computerChoice === 'rock') ||
+    (playerChoice === 'scissors' && computerChoice === 'paper')
+  ) {
+    return 'win';
+  } else {
+    return 'lose';
+  }
+}
+
+function displayResult(playerChoice, computerChoice, result) {
+  const resultsDiv = document.getElementById('results');
+  resultsDiv.innerHTML = `
+    <p>${playerName} chose ${playerChoice}</p>
+    <p>Computer chose ${computerChoice}</p>
+    <p>${getResultMessage(result)}</p>
+  `;
+}
+
+function getResultMessage(result) {
+  if (result === 'win') {
+    return 'You win!';
+  } else if (result === 'lose') {
+    return 'You lose!';
+  } else {
+    return 'It\'s a tie!';
+  }
 }
 
 function updateScore(result) {
-    if (result === 'user') {
-        userWins++;
-    } else if (result === 'computer') {
-        computerWins++;
-    }
-    document.getElementById('user-wins').innerText = userWins;
-    document.getElementById('computer-wins').innerText = computerWins;
+  if (result === 'win') {
+    playerScore++;
+  } else if (result === 'lose') {
+    computerScore++;
+  }
+  document.getElementById('player-score').textContent = playerScore;
+  document.getElementById('computer-score').textContent = computerScore;
 }
 
 function endGame() {
-    let message;
-    if (userWins > computerWins) {
-        message = 'Congratulations! You win!';
-    } else if (userWins < computerWins) {
-        message = 'Computer wins! Better luck next time.';
-    } else {
-        message = 'It\'s a tie!';
-    }
-    document.getElementById('result').innerText = message;
-    document.getElementById('rounds').innerHTML = '';
+  document.getElementById('game-over').style.display = 'block';
+  const winner = playerScore > computerScore ? playerName : 'Computer';
+  document.getElementById('winner').textContent = `${winner} wins!`;
+  const messages = ['Congratulations!', 'Better luck next time.', 'You did great!', 'Try again soon.'];
+  const message = messages[Math.floor(Math.random() * messages.length)];
+  document.getElementById('message').textContent = message;
 }
 
 function resetGame() {
-    userWins = 0;
-    computerWins = 0;
-    rounds = 0;
-    userName = document.getElementById('username').value;
-    document.getElementById('user-name').innerText = userName;
-    document.getElementById('user-wins').innerText = '0';
-    document.getElementById('computer-wins').innerText = '0';
-    document.getElementById('result').innerText = '';
-    document.getElementById('rounds').innerHTML = `
-        <button class="btn btn-primary" onclick="playRound('rock')">Rock</button>
-        <button class="btn btn-primary" onclick="playRound('paper')">Paper</button>
-        <button class="btn btn-primary" onclick="playRound('scissors')">Scissors</button>
-    `;
+  playerScore = 0;
+  computerScore = 0;
+  round = 1;
+  document.getElementById('player-info').style.display = 'block';
+  document.getElementById('game').style.display = 'none';
+  document.getElementById('game-over').style.display = 'none';
+  document.getElementById('player-score').textContent = '0';
+  document.getElementById('computer-score').textContent = '0';
 }
