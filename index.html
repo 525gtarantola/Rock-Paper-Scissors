@@ -31,13 +31,32 @@
       <input type="text" id="player-name">
       <button onclick="startGame()">Start Game</button>
     </div>
+
     <div id="game" style="display: none;">
       <h2 id="round-counter"></h2>
       <div id="choices">
-        <button onclick="playRound('rock')">Rock</button>
-        <button onclick="playRound('paper')">Paper</button>
-        <button onclick="playRound('scissors')">Scissors</button>
+
+          <div class="row col-12">
+            <div class="btn col-4">
+        <button onclick="playRound('rock')">
+          <img src="/images/rock.png" alt="Rock">
+      </button>
       </div>
+
+      <div class="btn col-4">
+      <button onclick="playRound('paper')">
+          <img src="/images/paper.png" alt="Paper">
+      </button>
+      </div>
+
+
+      <div class="btn col-4">
+      <button onclick="playRound('scissors')">
+          <img src="/images/scissors.png" alt="Scissors">
+      </button>
+      </div>
+
+
       <div id="results"></div>
       <div id="score">
         <p>Player: <span id="player-score">0</span></p>
@@ -51,6 +70,9 @@
       </div>
     </div>
   </div>
+  </div>
+  </div>
+ 
   <script src="script.js"></script>
 
 
