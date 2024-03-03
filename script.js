@@ -2,6 +2,7 @@ let playerName;
 let playerScore = 0;
 let computerScore = 0;
 let round = 1;
+let gameEnded = false; // Flag to indicate if the game has ended
 
 function startGame() {
   playerName = document.getElementById('player-name').value;
@@ -15,6 +16,8 @@ function updateRoundCounter() {
 }
 
 function playRound(playerChoice) {
+  if (gameEnded) return; // If the game has ended, do nothing
+
   const choices = ['rock', 'paper', 'scissors'];
   const computerChoice = choices[Math.floor(Math.random() * choices.length)];
 
@@ -25,6 +28,7 @@ function playRound(playerChoice) {
 
   if (round > 5) {
     endGame();
+    gameEnded = true; // Set the gameEnded flag to true
   } else {
     updateRoundCounter();
   }
@@ -77,18 +81,38 @@ function endGame() {
   document.getElementById('game-over').style.display = 'block';
   const winner = playerScore > computerScore ? playerName : 'Computer';
   document.getElementById('winner').textContent = `${winner} wins!`;
-  const messages = ['Congratulations!', 'Better luck next time.', 'You did great!', 'Try again soon.'];
-  const message = messages[Math.floor(Math.random() * messages.length)];
+  let message;
+  if (playerScore > computerScore) {
+    const winMessages = ['Congratulations!', 'You did great!'];
+    message = winMessages[Math.floor(Math.random() * winMessages.length)];
+  } else if (playerScore < computerScore) {
+    message = 'Better luck next time!';
+  } else {
+    message = 'Try again soon!';
+  }
   document.getElementById('message').textContent = message;
+
+  // Disable buttons for choosing 'rock', 'paper', or 'scissors'
+  const choices = document.querySelectorAll('.choice');
+  choices.forEach(choice => {
+    choice.disabled = true;
+  });
 }
 
 function resetGame() {
   playerScore = 0;
   computerScore = 0;
   round = 1;
+  gameEnded = false; // Reset the gameEnded flag
   document.getElementById('player-info').style.display = 'block';
   document.getElementById('game').style.display = 'none';
   document.getElementById('game-over').style.display = 'none';
   document.getElementById('player-score').textContent = '0';
   document.getElementById('computer-score').textContent = '0';
+
+  // Enable buttons for choosing 'rock', 'paper', or 'scissors'
+  const choices = document.querySelectorAll('.choice');
+  choices.forEach(choice => {
+    choice.disabled = false;
+  });
 }
