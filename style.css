@@ -3,6 +3,7 @@ body {
   font-family: "IBM Plex Mono", monospace;
   font-weight: 400;
   font-style: normal;
+  padding: 20px;
 }
 
 .container {
@@ -35,7 +36,7 @@ button {
 /* Score styles */
 #score {
   margin-top: 20px;
-  display: none; /* Initially hide the score */
+  display: none; /* Initially hides the score */
 }
 
 /* Responsive styles */
@@ -44,4 +45,14 @@ button {
       max-width: 100%;
       padding: 0 20px;
   }
+}
+
+footer {
+  width: 100%;
+  bottom: 0;
+  margin-top: 10%;
+}
+
+label {
+  margin-top: 70px;
 }
