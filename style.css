@@ -1,40 +1,47 @@
-body{
-    font-family: "IBM Plex Mono", monospace;
-    font-weight: 400;
-    font-style: normal;
+/* General styles */
+body {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
 }
-
-h1{
-    margin: 2%; 
-}
-
-h2{
-    margin: 2%; 
-}
-
 
 .container {
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  
-  button {
-    margin: 5px;
-  }
-  
-  #choices {
-    margin-top: 20px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%; 
-  }
-  
-  #score {
-    margin-top: 20px;
-  }
-  
-  #game-over {
-    margin-top: 20px;
-  }
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
 
+/* Button styles */
+button {
+  margin: 5px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.choice-button {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%; /* Make the button round */
+}
+
+.choice-button.paper {
+  width: 240px;
+}
+
+/* Score styles */
+#score {
+  margin-top: 20px;
+  display: none; /* Initially hide the score */
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .container {
+      max-width: 100%;
+      padding: 0 20px;
+  }
+}
