@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* General styles */
 body {
   font-family: "IBM Plex Mono", monospace;
@@ -6,12 +7,31 @@ body {
   padding: 20px;
 }
 
+=======
+body{
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h1{
+  margin: 2%; 
+}
+
+h2{
+  margin: 2%;
+  margin-bottom: 10%; 
+}
+
+
+>>>>>>> 118663ee379d0773cf68a1d0fa4f81859b8ac7be
 .container {
   max-width: 600px;
   margin: 0 auto;
   text-align: center;
 }
 
+<<<<<<< HEAD
 /* Button styles */
 button {
   margin: 5px;
@@ -56,3 +76,25 @@ footer {
 label {
   margin-top: 70px;
 }
+=======
+.btn {
+  margin-left: 4%;
+}
+
+#choices {
+  margin-top: 20px;
+}
+
+#score {
+  margin-top: 20px;
+}
+
+#game-over {
+  margin-top: 20px;
+}
+
+.footer {
+  margin-top: 7%;
+}
+
+>>>>>>> 118663ee379d0773cf68a1d0fa4f81859b8ac7be
