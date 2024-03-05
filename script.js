@@ -2,7 +2,6 @@ let playerName;
 let playerScore = 0;
 let computerScore = 0;
 let round = 1;
-<<<<<<< HEAD
 let gameEnded = false; // Flag to indicate if the game has ended
 
 // Function to start the game
@@ -44,36 +43,6 @@ function playRound(playerChoice) {
 }
 
 // Function to determine the result of the round
-=======
-
-function startGame() {
-  playerName = document.getElementById('player-name').value;
-  document.getElementById('player-info').style.display = 'none';
-  document.getElementById('game').style.display = 'block';
-  updateRoundCounter();
-}
-
-function updateRoundCounter() {
-  document.getElementById('round-counter').textContent = `Round ${round}`;
-}
-
-function playRound(playerChoice) {
-  const choices = ['rock', 'paper', 'scissors'];
-  const computerChoice = choices[Math.floor(Math.random() * choices.length)];
-
-  const result = getResult(playerChoice, computerChoice);
-  displayResult(playerChoice, computerChoice, result);
-  updateScore(result);
-  round++;
-
-  if (round > 5) {
-    endGame();
-  } else {
-    updateRoundCounter();
-  }
-}
-
->>>>>>> 118663ee379d0773cf68a1d0fa4f81859b8ac7be
 function getResult(playerChoice, computerChoice) {
   if (playerChoice === computerChoice) {
     return 'tie';
@@ -88,10 +57,7 @@ function getResult(playerChoice, computerChoice) {
   }
 }
 
-<<<<<<< HEAD
 // Function to display the result of the round
-=======
->>>>>>> 118663ee379d0773cf68a1d0fa4f81859b8ac7be
 function displayResult(playerChoice, computerChoice, result) {
   const resultsDiv = document.getElementById('results');
   resultsDiv.innerHTML = `
@@ -101,10 +67,7 @@ function displayResult(playerChoice, computerChoice, result) {
   `;
 }
 
-<<<<<<< HEAD
 // Function to get the result message
-=======
->>>>>>> 118663ee379d0773cf68a1d0fa4f81859b8ac7be
 function getResultMessage(result) {
   if (result === 'win') {
     return 'You win!';
@@ -115,10 +78,6 @@ function getResultMessage(result) {
   }
 }
 
-<<<<<<< HEAD
-// Function to update the score
-=======
->>>>>>> 118663ee379d0773cf68a1d0fa4f81859b8ac7be
 function updateScore(result) {
   if (result === 'win') {
     playerScore++;
@@ -129,15 +88,11 @@ function updateScore(result) {
   document.getElementById('computer-score').textContent = computerScore;
 }
 
-<<<<<<< HEAD
 // Function to end the game
-=======
->>>>>>> 118663ee379d0773cf68a1d0fa4f81859b8ac7be
 function endGame() {
   document.getElementById('game-over').style.display = 'block';
   const winner = playerScore > computerScore ? playerName : 'Computer';
   document.getElementById('winner').textContent = `${winner} wins!`;
-<<<<<<< HEAD
   let message;
   if (playerScore > computerScore) {
     const winMessages = ['Congratulations!', 'You did great!'];
@@ -154,27 +109,18 @@ function endGame() {
   choices.forEach(choice => {
     choice.disabled = true;
   });
-=======
-  const messages = ['Congratulations!', 'Better luck next time.', 'You did great!', 'Try again soon.'];
-  const message = messages[Math.floor(Math.random() * messages.length)];
-  document.getElementById('message').textContent = message;
->>>>>>> 118663ee379d0773cf68a1d0fa4f81859b8ac7be
 }
 
 function resetGame() {
   playerScore = 0;
   computerScore = 0;
   round = 1;
-<<<<<<< HEAD
   gameEnded = false; 
-=======
->>>>>>> 118663ee379d0773cf68a1d0fa4f81859b8ac7be
   document.getElementById('player-info').style.display = 'block';
   document.getElementById('game').style.display = 'none';
   document.getElementById('game-over').style.display = 'none';
   document.getElementById('player-score').textContent = '0';
   document.getElementById('computer-score').textContent = '0';
-<<<<<<< HEAD
   document.getElementById('player-name').value = ''; // Resets player name input
   document.getElementById('results').innerHTML = ''; // Clears previous results
   document.getElementById('score').style.display = 'none'; // Hides the score
@@ -184,6 +130,4 @@ function resetGame() {
   choices.forEach(choice => {
     choice.disabled = false;
   });
-=======
->>>>>>> 118663ee379d0773cf68a1d0fa4f81859b8ac7be
 }
